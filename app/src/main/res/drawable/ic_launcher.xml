@@ -1,0 +1,8 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/black" />
+    <item
+        android:drawable="@drawable/barcode_scan"
+        android:gravity="center"
+        android:width="100dp"
+        android:height="100dp" />
+</layer-list>

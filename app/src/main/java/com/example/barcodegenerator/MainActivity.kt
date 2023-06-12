@@ -24,13 +24,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initViews()
-
-
     }
 
     private fun initViews() {
         navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-
+            supportFragmentManager
+                .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
     }
 }
