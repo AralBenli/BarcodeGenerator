@@ -1,0 +1,10 @@
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?attr/textAppearanceLargePopupMenu"
+    style="@style/Widget.AppCompat.ActionButton"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:minWidth="100dp"
+    android:minHeight="48dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp" />

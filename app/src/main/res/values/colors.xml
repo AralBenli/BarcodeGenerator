@@ -10,4 +10,6 @@
     <color name="bright_red">#FF0D0D</color>
     <color name="pale_gray">#f5f9fe</color>
     <color name="blue_gray">#e8f2ff</color>
+    <color name="gray">#808080</color>
+    <color name="transparent_black">#99000000</color>
 </resources>

@@ -75,5 +75,7 @@ dependencies {
 
     //barcode generator
     implementation 'com.google.zxing:core:3.4.1'
+    //google location service
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
 
 }

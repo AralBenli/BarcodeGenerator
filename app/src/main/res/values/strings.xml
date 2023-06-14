@@ -4,4 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="qr_generator">QR Generator</string>
     <string name="enter_text">Enter text...</string>
+    <string name="enter_the_information_you_want_to_generate_barcode">Enter the information you want to generate Barcode</string>
+    <string name="create">Create</string>
 </resources>

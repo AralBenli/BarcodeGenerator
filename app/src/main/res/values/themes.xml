@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.BarcodeGenerator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/gray</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -13,5 +13,17 @@
         <item name="android:windowDisablePreview">true</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="toolbarStyle">@style/MyToolbarStyle</item>
+    </style>
+
+    <style name="MyToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+        <item name="actionOverflowMenuStyle">@style/MyOverflowMenuStyle</item>
+    </style>
+
+    <style name="MyOverflowMenuStyle" parent="Widget.MaterialComponents.PopupMenu.Overflow">
+        <item name="android:dropDownVerticalOffset">4dp</item>
+        <item name="android:overlapAnchor">false</item>
+        <item name="android:popupBackground">@android:color/white</item>
+        <!-- Add other style attributes as needed -->
     </style>
 </resources>

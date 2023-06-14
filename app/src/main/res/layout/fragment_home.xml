@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
         tools:context=".app.ui.pages.home.HomeFragment">
 
         <LinearLayout
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:text="Enter the information you want to generate Barcode"
+            android:text="@string/enter_the_information_you_want_to_generate_barcode"
             android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -58,16 +58,77 @@
             android:layout_height="150dp"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="5dp"
-            android:background="@color/pale_gray"
+            android:background="@drawable/background_edge"
             android:gravity="left|top"
             android:hint="@string/enter_text"
             android:minLines="10"
             android:padding="10dp"
-            android:textColorHint="@color/black"
+            android:textColorHint="@color/transparent_black"
             app:layout_constraintTop_toBottomOf="@+id/staticEnterInfo" />
 
+        <TextView
+            android:id="@+id/staticPrefer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="Do you want to add Location?"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/edtMessage"
+            app:layout_constraintTop_toBottomOf="@id/edtMessage" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/withoutLocation"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/staticPrefer"
+            app:layout_constraintWidth_percent="0.75">
+
+            <RadioButton
+                android:id="@+id/withoutLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/bright_red"
+                android:gravity="center|left"
+                android:maxLines="1"
+                android:text="No Location"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/withLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/bright_red"
+                android:gravity="center|left"
+                android:maxLines="1"
+                android:text="Add Location"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
 
+        </RadioGroup>
+
+
+        <Button
+            android:id="@+id/createButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/button_shape"
+            android:gravity="center"
+            android:text="@string/create"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radioGroup" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

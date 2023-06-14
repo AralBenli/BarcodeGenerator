@@ -1,8 +1,11 @@
 package com.example.barcodegenerator.app.ui.pages.splash
 
 
+import android.content.ContentValues
+import android.graphics.Bitmap
 import android.os.Handler
 import android.os.Looper
+import android.provider.MediaStore
 import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -11,7 +14,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.barcodegenerator.R
 import com.example.barcodegenerator.app.ui.base.BaseFragment
 import com.example.barcodegenerator.databinding.FragmentSplashBinding
-
+import java.io.IOException
 
 
 class SplashFragment : BaseFragment<FragmentSplashBinding>() {
@@ -38,3 +41,12 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         }, 4300)
     }
 }
+
+val contentValues = ContentValues().apply {
+    put(MediaStore.Images.Media.DISPLAY_NAME, "barcode_image.png")
+    put(MediaStore.Images.Media.MIME_TYPE, "image/png")
+}
+
+
+
+

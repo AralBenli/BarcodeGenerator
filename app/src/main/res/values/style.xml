@@ -10,4 +10,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
+    <style name="ActionModeMenuStyle" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:orientation">vertical</item>
+    </style>
 </resources>
