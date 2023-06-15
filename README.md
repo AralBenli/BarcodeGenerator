@@ -20,16 +20,19 @@ Barcode Generator App is a tool for a generate barcode and qr code with added in
 # Screenshots
   A    |  B  | C | D
 :---:|:---:|:---:|:---:
-![Screenshot_20230615_133750](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/35b9cacd-3f94-4c05-b363-2f392a0f0af1) |![Screenshot_20230615_140200](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/b6683e8b-bc60-4631-9121-2273df699ad6)|![Screenshot_20230615_135332](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/b02705d2-06ce-4d71-84da-955ad3c17570)|![Screenshot_20230615_133821](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/d76384c6-3f67-4b8a-a4c4-7f63adcfbca5)
+|![Screenshot_20230615_150555](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/e1c691ce-0ce9-409b-a852-5bef1b24c87d)|![Screenshot_20230615_150645](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/6e384483-9f5b-4afc-afdf-28b52ef961ae)|![Screenshot_20230615_150737](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/7c1f3a42-9980-473c-aeba-5bcf5d3084fd)|![Screenshot_20230615_150743](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/e7049dd4-e250-4bdc-88f3-2b8c12b7c8ab)
 
 
    D  |   E |  F
 :---:|:---:|:---:
-![Screenshot_20230615_134059](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/0d2aee41-ead1-42dd-b355-ea2e0abc538b)|![Screenshot_20230615_134108](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/604191e2-e479-4d84-af0f-c6805b9e9569)|![Screenshot_20230615_140145](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/98243d1d-87ff-4219-b19c-806a5ea3c21f)
+|![Screenshot_20230615_150850](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/e18d4bc2-9104-4444-baa5-76ac5119e14e)|![Screenshot_20230615_150808](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/53f5b8aa-bb6f-4e5a-acd9-4aa650aa48ba)|![Screenshot_20230615_150824](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/57abc7f8-d83f-4513-8c96-2b00e4ba0e41)
+
 
 # Video
 
+https://github.com/AralBenli/BarcodeGenerator/assets/105877592/8cd192d7-15e6-4f90-80d4-117e7e7b8594
 
 
-https://github.com/AralBenli/BarcodeGenerator/assets/105877592/c64de416-6b43-4a2d-8822-81ee95113a72
+
+
 
