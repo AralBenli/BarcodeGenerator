@@ -7,9 +7,12 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.barcodegenerator.R
@@ -28,8 +31,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        locationManager = requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        Log.d("HomeFragment", "locationManager is initialized: ${::locationManager.isInitialized}")
+        locationManager =
+            requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
     }
 
@@ -112,6 +115,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     }
                     edtMessage.text.clear()
                 } else {
+                    setEditTextEmptyWarning()
                     showCustomToast(
                         Status.Warn,
                         "Information space can't be empty",
@@ -121,6 +125,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
         }
     }
+    private fun setEditTextEmptyWarning() {
+        val handler = Handler(Looper.getMainLooper())
+        val resetBackgroundRunnable = Runnable {
+            binding.edtMessage.background = ContextCompat.getDrawable(requireContext(), R.drawable.background_edge)
+        }
+        binding.edtMessage.background = ContextCompat.getDrawable(requireContext(), R.drawable.edittext_border)
+
+        handler.removeCallbacks(resetBackgroundRunnable)
+        handler.postDelayed(resetBackgroundRunnable, 2200) // Delay in milliseconds
+    }
 
     private fun navigateToNextFragment(data: String, latitude: String?, longitude: String?) {
         if (binding.withLocation.isChecked) {
@@ -128,7 +142,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 val bundle = bundleOf(
                     "edtData" to data,
                     "latitude" to latitude,
-                    "longitude" to longitude
+                    "longitude" to longitude,
+                    "type" to withLocationValue
                 )
                 Log.d("Location", "Bundle: $bundle")
                 findNavController().navigate(R.id.qrFragment, bundle)
@@ -140,7 +155,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             val bundle = bundleOf(
                 "edtData" to data,
                 "latitude" to "",
-                "longitude" to ""
+                "longitude" to "",
+                "type" to noLocationValue
             )
             Log.d("Location", "Bundle: $bundle")
             findNavController().navigate(R.id.qrFragment, bundle)
@@ -148,7 +164,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             showCustomToast(Status.Warn, "Information cannot be sent", this@HomeFragment)
         }
     }
-
 
 
     private inner class MyLocationListener : LocationListener {
@@ -183,10 +198,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             )
 
             // Get the last known location
-            val lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            val lastKnownLocation =
+                locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
             if (lastKnownLocation != null) {
                 location = lastKnownLocation
-                Log.d("Location", "Latitude: ${location?.latitude}, Longitude: ${location?.longitude}")
+                Log.d(
+                    "Location",
+                    "Latitude: ${location?.latitude}, Longitude: ${location?.longitude}"
+                )
             } else {
                 Log.d("Location", "Last known location is null")
             }
@@ -199,7 +218,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             )
         }
     }
-
 
 
     override fun onRequestPermissionsResult(

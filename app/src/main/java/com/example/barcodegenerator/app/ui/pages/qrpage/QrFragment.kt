@@ -3,11 +3,12 @@ package com.example.barcodegenerator.app.ui.pages.qrpage
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Environment
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
+import android.util.Base64
 import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
@@ -16,11 +17,16 @@ import com.example.barcodegenerator.R
 import com.example.barcodegenerator.app.ui.base.BaseFragment
 import com.example.barcodegenerator.databinding.FragmentQrBinding
 import com.google.zxing.BarcodeFormat
+import com.google.zxing.EncodeHintType
 import com.google.zxing.WriterException
+import com.google.zxing.oned.Code128Writer
 import com.google.zxing.qrcode.QRCodeWriter
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by AralBenli on 12.06.2023.
@@ -40,38 +46,94 @@ class QrFragment : BaseFragment<FragmentQrBinding>() {
     override fun getViewBinding(): FragmentQrBinding = FragmentQrBinding.inflate(layoutInflater)
 
     override fun initViews() {
+        val typeValue = requireArguments().getInt("type")
+        val currentTime = Calendar.getInstance().time
+        val formattedTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(currentTime)
         val data = requireArguments().getString("edtData")
         val latitude = requireArguments().getString("latitude")
         val longitude = requireArguments().getString("longitude")
-        val formattedInfo = """
+        binding.switchPrefer.isChecked = false
+
+        when (typeValue) {
+            noLocationValue -> {
+                val formattedInfo = "$data"
+                generateBarcode(formattedInfo, false)
+                binding.switchPrefer.setOnCheckedChangeListener { _, isChecked ->
+                    if (isChecked) {
+                        generateBarcode(formattedInfo, true)
+                    } else {
+                        generateBarcode(formattedInfo, false)
+                    }
+                }
+            }
+            withLocationValue -> {
+                val formattedInfo = """
     Information: $data
+    Time: $formattedTime
     Latitude: $latitude
     Longitude: $longitude
 """.trimIndent()
-        Log.d("setdata", "location\n$formattedInfo")
-        generateBarcode(formattedInfo)
+                generateBarcode(formattedInfo, false)
+                binding.switchPrefer.setOnCheckedChangeListener { _, isChecked ->
+                    if (isChecked) {
+                        generateBarcode(formattedInfo, true)
+                    } else {
+                        generateBarcode(formattedInfo, false)
+                    }
+                }
+            }
+        }
+        closeButton()
         addSaving()
+        generatedBarcodeImage?.let { buttonsFunctionality(it) }
     }
 
+    private fun buttonsFunctionality(btm : Bitmap){
+        binding.iconDownload.setOnClickListener {
+            downloadImage(btm)
+        }
+        binding.iconShare.setOnClickListener {
+            shareImage(btm)
+        }
+    }
 
-    private fun generateBarcode(combinedData: String?) {
-
-        val writer = QRCodeWriter()
+    private fun generateBarcode(combinedData: String?, isBarCode: Boolean) {
         try {
-            val bitMatrix = writer.encode(combinedData, BarcodeFormat.QR_CODE, 512, 512)
-            val width = bitMatrix.width
-            val height = bitMatrix.height
+            val writer = if (isBarCode) Code128Writer()  else  QRCodeWriter()
+            val format = if (isBarCode) BarcodeFormat.CODE_128  else BarcodeFormat.QR_CODE
+
+            val hints = EnumMap<EncodeHintType, Any>(EncodeHintType::class.java)
+            hints[EncodeHintType.MARGIN] = 5 // Adjust the margin as needed
+
+            val content = combinedData?.take(80) // Truncate the content to maximum 80 characters if necessary
+
+            val width = if (isBarCode) 220 else 512
+            val height = if (isBarCode) 56 else 512
+
+            val bitMatrix = writer.encode(content, format, width, height, hints)
             val bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
+
             for (x in 0 until width) {
                 for (y in 0 until height) {
                     bmp.setPixel(x, y, if (bitMatrix[x, y]) Color.BLACK else Color.WHITE)
                 }
             }
             generatedBarcodeImage = bmp
-            binding.QrImageView.setImageBitmap(bmp)
+            val base64 = convertBitmapToBase64(bmp)
+            val decodedByteArray = Base64.decode(base64, Base64.DEFAULT)
+            val decodedBitmap =
+                BitmapFactory.decodeByteArray(decodedByteArray, 0, decodedByteArray.size)
+            binding.QrImageView.setImageBitmap(decodedBitmap)
         } catch (e: WriterException) {
-            print(e)
+            e.printStackTrace()
         }
+    }
+
+    private fun convertBitmapToBase64(bitmap: Bitmap): String {
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+        return Base64.encodeToString(byteArray, Base64.DEFAULT).replace("\n", "")
     }
 
     private fun addSaving() {
@@ -84,7 +146,6 @@ class QrFragment : BaseFragment<FragmentQrBinding>() {
             }
         }
     }
-
 
     private fun openDialog(bitmap: Bitmap) {
         val dialogBuilder = AlertDialog.Builder(requireContext())
@@ -120,6 +181,12 @@ class QrFragment : BaseFragment<FragmentQrBinding>() {
         }
 
         dialog.show()
+    }
+
+    private fun closeButton() {
+        binding.closeButton.setOnClickListener {
+            findNavController().navigate(R.id.homeFragment)
+        }
     }
 
 

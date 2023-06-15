@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,6 +24,7 @@
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_marginStart="25dp"
+                android:contentDescription="@null"
                 android:src="@drawable/barcode_icon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,6 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/qr_generator"
                 android:textAlignment="center"
-                android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="italic" />
         </LinearLayout>
@@ -46,7 +45,6 @@
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:text="@string/enter_the_information_you_want_to_generate_barcode"
-            android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/edtMessage"
@@ -63,7 +61,7 @@
             android:hint="@string/enter_text"
             android:minLines="10"
             android:padding="10dp"
-            android:textColorHint="@color/transparent_black"
+            android:textColor="@color/transparent_black"
             app:layout_constraintTop_toBottomOf="@+id/staticEnterInfo" />
 
         <TextView
@@ -71,8 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:text="Do you want to add Location?"
-            android:textColor="@color/black"
+            android:text="@string/do_you_want_to_add_location"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/edtMessage"
@@ -98,8 +95,7 @@
                 android:buttonTint="@color/bright_red"
                 android:gravity="center|left"
                 android:maxLines="1"
-                android:text="No Location"
-                android:textColor="@color/black"
+                android:text="@string/no_location"
                 android:textSize="16sp" />
 
             <RadioButton
@@ -110,8 +106,7 @@
                 android:buttonTint="@color/bright_red"
                 android:gravity="center|left"
                 android:maxLines="1"
-                android:text="Add Location"
-                android:textColor="@color/black"
+                android:text="@string/add_location"
                 android:textSize="16sp" />
 
 

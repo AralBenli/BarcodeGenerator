@@ -22,7 +22,8 @@ abstract class BaseFragment<VB : ViewBinding> :
     abstract fun getViewBinding(): VB
     abstract fun initViews()
     private var savedInstanceView: View? = null
-
+    val noLocationValue = 1
+    val withLocationValue = 2
 
     override fun onCreateView(
         inflater: LayoutInflater,
