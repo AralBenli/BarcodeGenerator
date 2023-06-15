@@ -23,9 +23,9 @@ Barcode Generator App is a tool for a generate barcode and qr code with added in
 |![Screenshot_20230615_150555](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/e1c691ce-0ce9-409b-a852-5bef1b24c87d)|![Screenshot_20230615_150645](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/6e384483-9f5b-4afc-afdf-28b52ef961ae)|![Screenshot_20230615_150737](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/7c1f3a42-9980-473c-aeba-5bcf5d3084fd)|![Screenshot_20230615_150743](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/e7049dd4-e250-4bdc-88f3-2b8c12b7c8ab)
 
 
-   D  |   E |  F
-:---:|:---:|:---:
-|![Screenshot_20230615_150850](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/e18d4bc2-9104-4444-baa5-76ac5119e14e)|![Screenshot_20230615_150808](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/53f5b8aa-bb6f-4e5a-acd9-4aa650aa48ba)|![Screenshot_20230615_150824](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/57abc7f8-d83f-4513-8c96-2b00e4ba0e41)
+   E  |   F |  G |  I
+:---:|:---:|:---:|:---:
+|![Screenshot_20230615_151406](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/c667a1b9-ff22-4b25-b58b-86d84f02bef4)|![Screenshot_20230615_151621](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/de2c1536-2f20-4a54-bc61-98263a99b5a7)|![Screenshot_20230615_150808](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/53f5b8aa-bb6f-4e5a-acd9-4aa650aa48ba)|![Screenshot_20230615_150824](https://github.com/AralBenli/BarcodeGenerator/assets/105877592/57abc7f8-d83f-4513-8c96-2b00e4ba0e41)
 
 
 # Video
